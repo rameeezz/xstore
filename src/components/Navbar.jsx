@@ -10,7 +10,7 @@ export default function Navbar() {
           aria-label="Homepage"
         >
           {/* <LogoMark /> */}
-          <strong className="fw-bold mb-0 text-primary">Xstore</strong>
+          <strong className="fw-bold mb-0 textColorMain">Xstore</strong>
         </Link>
 
         <button
@@ -48,17 +48,6 @@ export default function Navbar() {
                 aria-current={({ isActive }) => (isActive ? 'page' : undefined)}
               >
                 Categories
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                to="/about"
-                className={({ isActive }) =>
-                  `nav-link${isActive ? " active" : ""}`
-                }
-                aria-current={({ isActive }) => (isActive ? 'page' : undefined)}
-              >
-                About
               </NavLink>
             </li>
             <li className="nav-item">
