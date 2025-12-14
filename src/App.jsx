@@ -3,7 +3,7 @@ import "./App.css";
 import Home from "./pages/home/Home";
 import ErrorPage from "./pages/error/ErrorPage";
 import MasterLayout from "./pages/MasterLayout";
-import Categories from './components/categories/Categories';
+import Categories from './pages/categories/Categories';
 
 function App() {
   const Router = createBrowserRouter([

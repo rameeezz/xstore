@@ -1,0 +1,13 @@
+.topHeaderPhoto{
+    top: 25%;
+}
+@media (max-width: 576px){
+    .topHeaderPhoto{
+        top: 30%;
+    }
+    .fontSize{
+        font-size: 0.9rem !important;
+        
+    }
+    
+}
