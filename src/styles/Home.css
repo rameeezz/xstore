@@ -1,0 +1,11 @@
+/* style for responsive in category section */
+
+@media (max-width: 576px) {
+  .cardWidth {
+    width: 80% !important;
+    margin: 10px;
+  }
+  .textSizeInSmallScreen{
+    font-size: 12px;
+  }
+}
