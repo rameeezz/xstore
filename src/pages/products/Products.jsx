@@ -11,7 +11,7 @@ import "../../styles/Products.css";
 export default function Products() {
   const [searchParams] = useSearchParams();
   const categoryId = searchParams.get("categoryId");
-  const [productInCategory, setProductInCategory] = useState();
+  const [productInCategory, setProductInCategory] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -62,6 +62,16 @@ export default function Products() {
   return (
     <>
       <div className="container">
+        {productInCategory.length === 0 && (
+          <div className="w-100 vh-100 d-flex justify-content-center align-items-center">
+            <div
+              className="alert alert-info text-center mt-5 w-75 shadow"
+              role="alert"
+            >
+              <p className="mb-0">{MESSAGES.NO_DATA}</p>
+            </div>
+          </div>
+        )}
         <Pagination
           items={productInCategory}
           itemsPerPage={PRODUCTS_PER_PAGE}
