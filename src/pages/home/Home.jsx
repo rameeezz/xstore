@@ -4,6 +4,7 @@ import { categoriesAPI } from "../../services/api.js";
 import { MESSAGES } from "../../constants/index.js";
 import "../../styles/Home.css";
 import SeeMore from './../../components/buttons/SeeMore';
+import ViewDetails from './../../components/buttons/ViewDetails';
 
 // Reusable Card Component - Capitalized!
 const CategoryCard = ({ category }) => {
@@ -20,9 +21,7 @@ const CategoryCard = ({ category }) => {
         </div>
         <div className="card-body text-center d-flex flex-column">
           <h5 className="card-title fw-bold">{category?.name}</h5>
-          <button className="btn btn-primary btn-sm mt-auto">
-            View Details
-          </button>
+          <ViewDetails categoryId={category?.id}/>
         </div>
       </div>
     </div>
