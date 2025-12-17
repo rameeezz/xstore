@@ -61,7 +61,8 @@ export default function Products() {
   }
   return (
     <>
-      <div className="container">
+      <div className="container mt-5 mb-5">
+        <h1 className="text-center textColorMain mb-5 ">Products</h1>
         {productInCategory.length === 0 && (
           <div className="w-100 vh-100 d-flex justify-content-center align-items-center">
             <div
