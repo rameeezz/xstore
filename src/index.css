@@ -48,12 +48,9 @@ html {
 .textColorMain {
   color: #3498db;
 }
-.primaryColor {
-  color: #3498db;
-}
 .secondaryColor {
   color: #ff6b6b;
 }
 .backgroundColor {
-  color: #f8f9fa;
+  background-color: #f8f9fa;
 }

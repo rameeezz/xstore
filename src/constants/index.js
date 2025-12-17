@@ -4,7 +4,7 @@ export const APP_NAME = import.meta.env.VITE_APP_NAME || "XStore";
 
 // Pagination Configuration
 export const CATEGORIES_PER_PAGE = 6;
-export const PRODUCTS_PER_PAGE = 12;
+export const PRODUCTS_PER_PAGE = 10;
 
 // Timeouts
 export const API_TIMEOUT = 10000;
@@ -24,4 +24,5 @@ export const MESSAGES = {
   ERROR: "Error fetching data. Please try again.",
   NO_DATA: "No data found.",
   SUCCESS: "Success!",
+  UNDEFINED_CATEGORYID: "Please Try Again Later.",
 };
