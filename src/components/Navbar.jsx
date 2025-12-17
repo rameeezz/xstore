@@ -52,6 +52,17 @@ export default function Navbar() {
             </li>
             <li className="nav-item">
               <NavLink
+                to="/products"
+                className={({ isActive }) =>
+                  `nav-link${isActive ? " active" : ""}`
+                }
+                aria-current={({ isActive }) => (isActive ? 'page' : undefined)}
+              >
+                Products
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
                 to="/contact"
                 className={({ isActive }) =>
                   `nav-link${isActive ? " active" : ""}`

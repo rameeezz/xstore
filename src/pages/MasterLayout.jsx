@@ -1,15 +1,21 @@
 import React from "react";
-import Navbar from './../components/Navbar';
-import { Outlet } from "react-router-dom";
-import Footer from './../components/footer/Footer';
-export default function MasterLayout() {
+import { useLocation } from "react-router-dom";
+import Navbar from "./../components/Navbar";
+import Footer from "./../components/footer/Footer";
+
+export default function MasterLayout({ children }) {
+  const { pathname } = useLocation();
+
   return (
     <>
       <Navbar />
-      <main>
-        <Outlet />
+      <main
+        key={pathname}
+        style={{ paddingTop: "55px", minHeight: "calc(100vh - 140px)" }}
+      >
+        {children}
       </main>
-      <Footer/>
+      <Footer />
     </>
   );
 }
