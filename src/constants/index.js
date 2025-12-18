@@ -4,7 +4,7 @@ export const APP_NAME = import.meta.env.VITE_APP_NAME || "XStore";
 
 // Pagination Configuration
 export const CATEGORIES_PER_PAGE = 6;
-export const PRODUCTS_PER_PAGE = 10;
+export const PRODUCTS_PER_PAGE = 12;
 
 // Timeouts
 export const API_TIMEOUT = 10000;

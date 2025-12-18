@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useSearchParams } from "react-router-dom";
 import { categoriesAPI } from "../../services/api.js";
 import { MESSAGES } from "../../constants/index.js";
@@ -7,35 +7,87 @@ import { PRODUCTS_PER_PAGE } from "../../constants/index.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import "../../styles/Products.css";
-
+import { productApi } from "../../services/api.js";
+const ProductCard = ({ item }) => {
+  return (
+    <div className="col-lg-4 col-md-6 col-sm-12">
+      <div className="card">
+        <div className="position-relative">
+          <div className="position-absolute price-tag backgroundColor shadow rounded-1">
+            <span className="p-2 secondaryColor">{item?.price}L.E</span>
+          </div>
+          <img
+            src={item?.images[0]}
+            className="card-img-top"
+            loading="lazy"
+            alt={item?.title}
+          />
+        </div>
+        <div className="card-body">
+          <h5
+            className="card-title"
+            title={item?.title}
+            style={{
+              display: "-webkit-box",
+              WebkitLineClamp: 1,
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
+            }}
+          >
+            {item?.title}
+          </h5>
+          <p
+            className="card-text"
+            title={item?.description}
+            style={{
+              display: "-webkit-box",
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
+            }}
+          >
+            {item?.description}
+          </p>
+          <div className="w-100 d-flex justify-content-between">
+            <button className="btn btn-primary">Go somewhere</button>
+            <button className="btn btn-primary">
+              <FontAwesomeIcon icon={faCartShopping} />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 export default function Products() {
   const [searchParams] = useSearchParams();
   const categoryId = searchParams.get("categoryId");
-  const [productInCategory, setProductInCategory] = useState([]);
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchProductInCategory = async () => {
+  const fetchProducts = useCallback(async () => {
     setLoading(true);
     setError(null);
-    if (!categoryId) {
-      setProductInCategory([]);
-      setLoading(false);
-      setError(MESSAGES.UNDEFINED_CATEGORYID);
-    } else {
-      try {
-        const data = await categoriesAPI.getProductInCategory(categoryId);
-        setProductInCategory(data);
-      } catch (error) {
-        setError(MESSAGES.ERROR);
-      } finally {
-        setLoading(false);
+    try {
+      let data;
+      if (categoryId) {
+        data = await categoriesAPI.getProductInCategory(categoryId);
+      } else {
+        data = await productApi.getAllProduct();
       }
+      setProducts(data);
+    } catch (error) {
+      setError(MESSAGES.ERROR || "Something went wrong");
+    } finally {
+      setLoading(false);
     }
-  };
-  useEffect(() => {
-    fetchProductInCategory();
   }, [categoryId]);
+
+  useEffect(() => {
+    fetchProducts();
+  }, [fetchProducts]);
+
   if (loading) {
     return (
       <div className="w-100 vh-100 d-flex justify-content-center align-items-center">
@@ -50,10 +102,7 @@ export default function Products() {
       <div className="alert alert-danger mt-5 text-center" role="alert">
         <h4 className="alert-heading">Error</h4>
         <p>{error}</p>
-        <button
-          className="btn btn-primary btn-sm"
-          onClick={fetchProductInCategory}
-        >
+        <button className="btn btn-primary btn-sm" onClick={fetchProducts}>
           Try Again
         </button>
       </div>
@@ -63,7 +112,7 @@ export default function Products() {
     <>
       <div className="container mt-5 mb-5">
         <h1 className="text-center textColorMain mb-5 ">Products</h1>
-        {productInCategory.length === 0 && (
+        {products.length === 0 && (
           <div className="w-100 vh-100 d-flex justify-content-center align-items-center">
             <div
               className="alert alert-info text-center mt-5 w-75 shadow"
@@ -74,35 +123,9 @@ export default function Products() {
           </div>
         )}
         <Pagination
-          items={productInCategory}
+          items={products}
           itemsPerPage={PRODUCTS_PER_PAGE}
-          renderItem={(cat) => (
-            <div className="col-lg-4 col-md-6 col-sm-12">
-              <div className="card">
-                <div className="position-relative">
-                  <div className="position-absolute price-tag backgroundColor shadow rounded-1">
-                    <span className="p-2 secondaryColor">{cat?.price}L.E</span>
-                  </div>
-                  <img
-                    src={cat?.images[0]}
-                    className="card-img-top"
-                    loading="lazy"
-                    alt={cat?.title}
-                  />
-                </div>
-                <div className="card-body">
-                  <h5 className="card-title">{cat?.title}</h5>
-                  <p className="card-text">{cat?.description}</p>
-                  <div className="w-100 d-flex justify-content-between">
-                    <button className="btn btn-primary">Go somewhere</button>
-                    <button className="btn btn-primary">
-                      <FontAwesomeIcon icon={faCartShopping} />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
+          renderItem={(cat) => <ProductCard item={cat} />}
         />
       </div>
     </>
