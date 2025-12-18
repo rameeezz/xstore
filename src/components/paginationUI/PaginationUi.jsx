@@ -1,10 +1,13 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import PropTypes from "prop-types";
 import "../../styles/PaginationUiCss.css";
 
-
 function Pagination({ items = [], itemsPerPage, renderItem }) {
   const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [currentPage]);
 
   // Ensure items is an array
   const safeItems = Array.isArray(items) ? items : [];
@@ -33,7 +36,6 @@ function Pagination({ items = [], itemsPerPage, renderItem }) {
     (pageNumber) => {
       const pageNum = Math.max(1, Math.min(pageNumber, totalPages));
       setCurrentPage(pageNum);
-      window.scrollTo({ top: 0, behavior: "smooth" });
     },
     [totalPages]
   );
@@ -41,14 +43,12 @@ function Pagination({ items = [], itemsPerPage, renderItem }) {
   const goToNextPage = useCallback(() => {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
-      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   }, [currentPage, totalPages]);
 
   const goToPreviousPage = useCallback(() => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
-      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   }, [currentPage]);
 
@@ -165,7 +165,6 @@ function Pagination({ items = [], itemsPerPage, renderItem }) {
               </li>
             </ul>
           </nav>
-
         </>
       )}
     </>
