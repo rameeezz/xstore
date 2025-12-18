@@ -72,7 +72,7 @@ const ProductCard = ({ product }) => {
             {product?.description}
           </p>
           <div className="w-100 d-flex justify-content-between">
-            <button className="btn btn-primary">Go somewhere</button>
+            <ViewDetails productID={product?.id}/>
             <button className="btn btn-primary">
               <FontAwesomeIcon icon={faCartShopping} />
             </button>

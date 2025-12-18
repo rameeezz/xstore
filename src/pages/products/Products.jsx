@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import "../../styles/Products.css";
 import { productApi } from "../../services/api.js";
+import ViewDetails from "./../../components/buttons/ViewDetails";
 const ProductCard = ({ item }) => {
   return (
     <div className="col-lg-4 col-md-6 col-sm-12">
@@ -49,7 +50,7 @@ const ProductCard = ({ item }) => {
             {item?.description}
           </p>
           <div className="w-100 d-flex justify-content-between">
-            <button className="btn btn-primary">Go somewhere</button>
+            <ViewDetails productID={item?.id} />
             <button className="btn btn-primary">
               <FontAwesomeIcon icon={faCartShopping} />
             </button>

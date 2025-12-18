@@ -1,11 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function ViewDetails({ categoryId }) {
+export default function ViewDetails({ categoryId, productID }) {
   const navigate = useNavigate();
 
   function navigateToProducts() {
-    navigate(`/products?categoryId=${categoryId}`);
+    if (categoryId) {
+      navigate(`/products?categoryId=${categoryId}`);
+    } else {
+      navigate(`/products-details?productID=${productID}`);
+    }
   }
 
   return (
