@@ -8,6 +8,7 @@ import ErrorPage from "./pages/error/ErrorPage";
 import { ROUTES } from "./constants/index.js";
 import "./App.css";
 import Products from "./pages/products/Products";
+import ProductDetails from './pages/products/ProductDetails';
 
 function AppContent() {
   useScrollToTop(); // Call hook here inside Router
@@ -34,6 +35,14 @@ function AppContent() {
         element={
           <MasterLayout>
             <Products />
+          </MasterLayout>
+        }
+      />
+      <Route
+        path={ROUTES.PRODUCTS_DETAILS}
+        element={
+          <MasterLayout>
+            <ProductDetails/>
           </MasterLayout>
         }
       />

@@ -15,6 +15,7 @@ export const ROUTES = {
   HOME: "/",
   CATEGORIES: "/categories",
   PRODUCTS: "/products",
+  PRODUCTS_DETAILS: "/products-details",
   NOT_FOUND: "*",
 };
 

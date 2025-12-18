@@ -54,5 +54,15 @@ export const productApi = {
       );
     }
   },
+  getOneProduct: async (productID) => {
+    try {
+      const { data } = await apiClient.get(`products/${productID}`);
+      return data;
+    } catch (error) {
+      throw new Error(
+        error.response?.data?.message || "Failed to fetch products."
+      );
+    }
+  },
 };
 export default apiClient;
