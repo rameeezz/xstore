@@ -65,6 +65,7 @@ export default function ProductDetails() {
               src={selectedImage || product?.images?.[0]}
               alt={product?.title || "Product Image"}
               className="w-100 h-100 rounded"
+              loading="lazy"
             />
           </div>
           <div className="col-md-6 col-lg-6 col-sm-12 ">
@@ -89,6 +90,7 @@ export default function ProductDetails() {
                     src={el}
                     alt="photos of product"
                     className="w-100 rounded"
+                    loading="lazy"
                   />
                 </div>
               ))}
