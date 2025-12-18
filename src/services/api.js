@@ -20,7 +20,9 @@ export const categoriesAPI = {
   },
   getProductInCategory: async (categoryId) => {
     try {
-      const { data } = await apiClient.get(`/categories/${categoryId}/products`);
+      const { data } = await apiClient.get(
+        `/categories/${categoryId}/products`
+      );
       return data;
     } catch (error) {
       throw new Error(
@@ -41,5 +43,16 @@ export const categoriesAPI = {
 };
 
 // Products API
-
+export const productApi = {
+  getAllProduct: async () => {
+    try {
+      const { data } = await apiClient.get("products/");
+      return data;
+    } catch (error) {
+      throw new Error(
+        error.response?.data?.message || "Failed to fetch products."
+      );
+    }
+  },
+};
 export default apiClient;
