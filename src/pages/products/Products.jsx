@@ -9,11 +9,15 @@ import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import "../../styles/Products.css";
 import { productApi } from "../../services/api.js";
 import ViewDetails from "./../../components/buttons/ViewDetails";
+import FavButton from "./../../components/buttons/FavButton";
 const ProductCard = ({ item }) => {
   return (
     <div className="col-lg-4 col-md-6 col-sm-12">
       <div className="card">
         <div className="position-relative">
+          <div className="position-absolute fav-tag">
+            <FavButton product={item} />
+          </div>
           <div className="position-absolute price-tag backgroundColor shadow rounded-1">
             <span className="p-2 secondaryColor">{item?.price}L.E</span>
           </div>
@@ -29,10 +33,9 @@ const ProductCard = ({ item }) => {
             className="card-title"
             title={item?.title}
             style={{
-              display: "-webkit-box",
-              WebkitLineClamp: 1,
-              WebkitBoxOrient: "vertical",
               overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
             }}
           >
             {item?.title}

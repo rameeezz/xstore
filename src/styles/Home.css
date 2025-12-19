@@ -1,5 +1,8 @@
 /* style for responsive in category section */
-
+.fav-tag{
+  top: 5%;
+  right: 5%;
+}
 @media (max-width: 576px) {
   .cardWidth {
     width: 80% !important;

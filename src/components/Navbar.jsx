@@ -63,13 +63,13 @@ export default function Navbar() {
             </li>
             <li className="nav-item">
               <NavLink
-                to="/contact"
+                to="/fav-items"
                 className={({ isActive }) =>
                   `nav-link${isActive ? " active" : ""}`
                 }
                 aria-current={({ isActive }) => (isActive ? 'page' : undefined)}
               >
-                Contact
+                Favorites
               </NavLink>
             </li>
           </ul>
