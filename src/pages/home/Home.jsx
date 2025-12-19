@@ -8,6 +8,7 @@ import ViewDetails from "./../../components/buttons/ViewDetails";
 import { productApi } from "../../services/api.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import FavButton from "./../../components/buttons/FavButton";
 
 // Reusable Card Component - Capitalized!
 const CategoryCard = ({ category }) => {
@@ -36,6 +37,9 @@ const ProductCard = ({ product }) => {
     <div className="col-lg-4 col-md-6 col-sm-12 cardWidth mt-0 mt-md-3">
       <div className="card h-100">
         <div className="position-relative">
+          <div className="position-absolute fav-tag">
+            <FavButton product={product}/>
+          </div>
           <div className="position-absolute price-tag backgroundColor shadow rounded-1">
             <span className="p-2 secondaryColor">{product?.price}L.E</span>
           </div>
@@ -72,7 +76,7 @@ const ProductCard = ({ product }) => {
             {product?.description}
           </p>
           <div className="w-100 d-flex justify-content-between">
-            <ViewDetails productID={product?.id}/>
+            <ViewDetails productID={product?.id} />
             <button className="btn btn-primary">
               <FontAwesomeIcon icon={faCartShopping} />
             </button>

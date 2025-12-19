@@ -2,9 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { productApi } from "../../services/api.js";
 import { MESSAGES } from "../../constants/index.js";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import "../../styles/ProductDetailsCss.css";
+import FavButton from "./../../components/buttons/FavButton";
 export default function ProductDetails() {
   const [searchParams] = useSearchParams();
   const productID = searchParams.get("productID");
@@ -65,6 +63,7 @@ export default function ProductDetails() {
               src={selectedImage || product?.images?.[0]}
               alt={product?.title || "Product Image"}
               className="w-100 h-100 rounded"
+              loading="lazy"
             />
           </div>
           <div className="col-md-6 col-lg-6 col-sm-12 ">
@@ -75,7 +74,7 @@ export default function ProductDetails() {
               </div>
               <div className="mt-1 mt-md-2">
                 {/* make it in single component to use it in more than one place  */}
-                <FontAwesomeIcon icon={faHeart} className="cursor-Pointer" />
+                <FavButton product={product} />
               </div>
             </div>
             <div className="d-flex flex-row gap-1 mt-4">
@@ -89,6 +88,7 @@ export default function ProductDetails() {
                     src={el}
                     alt="photos of product"
                     className="w-100 rounded"
+                    loading="lazy"
                   />
                 </div>
               ))}

@@ -16,6 +16,7 @@ export const ROUTES = {
   CATEGORIES: "/categories",
   PRODUCTS: "/products",
   PRODUCTS_DETAILS: "/products-details",
+  FAV_ITEMS: "/fav-items",
   NOT_FOUND: "*",
 };
 
