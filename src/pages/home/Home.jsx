@@ -6,9 +6,7 @@ import "../../styles/Home.css";
 import SeeMore from "./../../components/buttons/SeeMore";
 import ViewDetails from "./../../components/buttons/ViewDetails";
 import { productApi } from "../../services/api.js";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import FavButton from "./../../components/buttons/FavButton";
+import CardItem from "./../../components/cardItem/CardItem";
 
 // Reusable Card Component - Capitalized!
 const CategoryCard = ({ category }) => {
@@ -26,61 +24,6 @@ const CategoryCard = ({ category }) => {
         <div className="card-body text-center d-flex flex-column">
           <h5 className="card-title fw-bold">{category?.name}</h5>
           <ViewDetails categoryId={category?.id} />
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const ProductCard = ({ product }) => {
-  return (
-    <div className="col-lg-4 col-md-6 col-sm-12 cardWidth mt-0 mt-md-3">
-      <div className="card h-100">
-        <div className="position-relative">
-          <div className="position-absolute fav-tag">
-            <FavButton product={product}/>
-          </div>
-          <div className="position-absolute price-tag backgroundColor shadow rounded-1">
-            <span className="p-2 secondaryColor">{product?.price}L.E</span>
-          </div>
-          <img
-            src={product?.images[0]}
-            className="card-img-top"
-            loading="lazy"
-            alt={product?.title}
-          />
-        </div>
-        <div className="card-body">
-          <h5
-            className="card-title"
-            title={product?.title}
-            style={{
-              display: "-webkit-box",
-              WebkitLineClamp: 1,
-              WebkitBoxOrient: "vertical",
-              overflow: "hidden",
-            }}
-          >
-            {product?.title}
-          </h5>
-          <p
-            className="card-text"
-            title={product?.description}
-            style={{
-              display: "-webkit-box",
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: "vertical",
-              overflow: "hidden",
-            }}
-          >
-            {product?.description}
-          </p>
-          <div className="w-100 d-flex justify-content-between">
-            <ViewDetails productID={product?.id} />
-            <button className="btn btn-primary">
-              <FontAwesomeIcon icon={faCartShopping} />
-            </button>
-          </div>
         </div>
       </div>
     </div>
@@ -169,32 +112,19 @@ export default function Home() {
           <SeeMore to="categories" word="Categories" />
         </div>
         {/* showing some of categories */}
+
         <div className="row gap-md-0 gap-3 justify-content-center">
-          {category.length > 0 ? (
-            <>
-              <CategoryCard category={category[0]} />
-              <CategoryCard category={category[1]} />
-              <CategoryCard category={category[2]} />
-              <CategoryCard category={category[3]} />
-              <CategoryCard category={category[4]} />
-              <CategoryCard category={category[5]} />
-            </>
-          ) : (
-            ""
-          )}
+          {category.length > 0 &&
+            category
+              .slice(0, 6)
+              .map((category) => (
+                <CategoryCard key={category?.id} category={category} />
+              ))}
         </div>
+
         {/* product section */}
         <div
-          className="
-    d-flex 
-    flex-column 
-    flex-md-row 
-    justify-content-center 
-    justify-content-md-between 
-    align-items-center 
-    p-3 
-    gap-2
-    mt-3
+          className=" d-flex flex-column flex-md-row justify-content-center justify-content-md-between align-items-center p-3 gap-2 mt-3
   "
         >
           <h2 className="fw-bold textColorMain mb-0">Products</h2>
@@ -211,9 +141,7 @@ export default function Home() {
           {products.length > 0 &&
             products
               .slice(0, 6)
-              .map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
+              .map((product) => <CardItem key={product?.id} item={product} />)}
         </div>
       </div>
     </>

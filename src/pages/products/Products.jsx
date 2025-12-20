@@ -4,65 +4,9 @@ import { categoriesAPI } from "../../services/api.js";
 import { MESSAGES } from "../../constants/index.js";
 import Pagination from "../../components/paginationUI/PaginationUi.jsx";
 import { PRODUCTS_PER_PAGE } from "../../constants/index.js";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import "../../styles/Products.css";
 import { productApi } from "../../services/api.js";
-import ViewDetails from "./../../components/buttons/ViewDetails";
-import FavButton from "./../../components/buttons/FavButton";
-const ProductCard = ({ item }) => {
-  return (
-    <div className="col-lg-4 col-md-6 col-sm-12">
-      <div className="card">
-        <div className="position-relative">
-          <div className="position-absolute fav-tag">
-            <FavButton product={item} />
-          </div>
-          <div className="position-absolute price-tag backgroundColor shadow rounded-1">
-            <span className="p-2 secondaryColor">{item?.price}L.E</span>
-          </div>
-          <img
-            src={item?.images[0]}
-            className="card-img-top"
-            loading="lazy"
-            alt={item?.title}
-          />
-        </div>
-        <div className="card-body">
-          <h5
-            className="card-title"
-            title={item?.title}
-            style={{
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-              whiteSpace: "nowrap",
-            }}
-          >
-            {item?.title}
-          </h5>
-          <p
-            className="card-text"
-            title={item?.description}
-            style={{
-              display: "-webkit-box",
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: "vertical",
-              overflow: "hidden",
-            }}
-          >
-            {item?.description}
-          </p>
-          <div className="w-100 d-flex justify-content-between">
-            <ViewDetails productID={item?.id} />
-            <button className="btn btn-primary">
-              <FontAwesomeIcon icon={faCartShopping} />
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+import CardItem from "./../../components/cardItem/CardItem";
+
 export default function Products() {
   const [searchParams] = useSearchParams();
   const categoryId = searchParams.get("categoryId");
@@ -129,7 +73,7 @@ export default function Products() {
         <Pagination
           items={products}
           itemsPerPage={PRODUCTS_PER_PAGE}
-          renderItem={(cat) => <ProductCard item={cat} />}
+          renderItem={(cat) => <CardItem item={cat} />}
         />
       </div>
     </>
