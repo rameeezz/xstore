@@ -8,9 +8,19 @@
   width: 25px;
   height: 25px;
 }
+.facebook-color {
+  color: #3b5998;
+}
+.linkedin-color {
+  color: #0077b5;
+}
+.instagram-color {
+  color: #e1306c;
+}
+
 @media screen and (max-width: 520px) {
   .textCopyWrite {
-    font-size: 8px;
+    font-size: 12px;
   }
   .iconSizeInSmallScreen {
     font-size: 12px;

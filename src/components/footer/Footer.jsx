@@ -23,25 +23,37 @@ export default function Footer() {
           Copyright {new Date().getFullYear()} © slothUI
         </p>
         <div className="d-flex justify-content-center align-items-center gap-3 mb-2 mb-md-0">
-          <a href="#!" aria-label="Facebook">
+          <a
+            href="#!"
+            aria-label="Facebook"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FontAwesomeIcon
               icon={faFacebookF}
-              style={{ color: "#3b5998" }}
-              className="iconSizeInSmallScreen"
+              className="iconSizeInSmallScreen facebook-color"
             />
           </a>
-          <a href="#!" aria-label="LinkedIn">
+          <a
+            href="#!"
+            aria-label="LinkedIn"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FontAwesomeIcon
               icon={faLinkedinIn}
-              style={{ color: "#0077b5" }}
-              className="iconSizeInSmallScreen"
+              className="iconSizeInSmallScreen linkedin-color"
             />
           </a>
-          <a href="#!" aria-label="Instagram">
+          <a
+            href="#!"
+            aria-label="Instagram"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FontAwesomeIcon
               icon={faInstagram}
-              style={{ color: "#e1306c" }}
-              className="iconSizeInSmallScreen"
+              className="iconSizeInSmallScreen instagram-color"
             />
           </a>
         </div>
