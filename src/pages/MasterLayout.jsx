@@ -7,15 +7,16 @@ export default function MasterLayout({ children }) {
   const { pathname } = useLocation();
 
   return (
-    <>
+    <div className="d-flex flex-column min-vh-100">
       <Navbar />
       <main
         key={pathname}
-        style={{ paddingTop: "55px", minHeight: "calc(100vh - 140px)" }}
+        className="flex-grow-1"
+        style={{ paddingTop: "55px" }}
       >
         {children}
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
