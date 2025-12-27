@@ -64,5 +64,18 @@ export const productApi = {
       );
     }
   },
+  filterByPrice: async (from, to) => {
+    try {
+      const { data } = await apiClient.get(
+        `products/?price_min=${from}&price_max=${to}`
+      );
+      return data;
+    } catch (error) {
+      throw new Error(
+        error.response?.data.message ||
+          "Something Went Wrong Please Try Agian Later."
+      );
+    }
+  },
 };
 export default apiClient;
