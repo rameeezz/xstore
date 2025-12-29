@@ -1,9 +1,8 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import ViewDetails from "./../../components/buttons/ViewDetails";
 import FavButton from "./../../components/buttons/FavButton";
 import "../../styles/cardStyle.css";
+import AddToCart from './../buttons/cart button/AddToCart';
 export default function CardItem({ item }) {
   return (
     <>
@@ -49,9 +48,7 @@ export default function CardItem({ item }) {
             </p>
             <div className="w-100 d-flex justify-content-between">
               <ViewDetails productID={item?.id} />
-              <button className="btn btn-primary">
-                <FontAwesomeIcon icon={faCartShopping} />
-              </button>
+              <AddToCart/>
             </div>
           </div>
         </div>

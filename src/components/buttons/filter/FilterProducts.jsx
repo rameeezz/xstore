@@ -10,8 +10,14 @@ export default function FilterProducts({ onFilter }) {
     from: "",
     to: "",
   });
+  console.log(priceRange);
+
   const [categoryType, setCategoryType] = useState("");
+  console.log(categoryType);
+
   const [categoryID, setCategoryID] = useState(0);
+  console.log(categoryID);
+
   function handlePriceChange(e) {
     const { name, value } = e.target;
     setPriceRange((prev) => ({ ...prev, [name]: value }));
@@ -59,6 +65,10 @@ export default function FilterProducts({ onFilter }) {
       setActiveFilter(null);
       setCategoryID("");
       setCategoryType("");
+      setPriceRange({
+        from: 0,
+        to: 0,
+      });
     }
   }
   return (
