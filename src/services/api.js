@@ -90,5 +90,18 @@ export const productApi = {
       );
     }
   },
+  filterByPriceAndCategory: async (categoryId, minPrice, maxPrice) => {
+    try {
+      const { data } = await apiClient.get(
+        `products/?price_min=${minPrice}&price_max=${maxPrice}&categoryId=${categoryId}`
+      );
+      return data;
+    } catch (error) {
+      throw new Error(
+        error.response?.data?.message ||
+          "Something Went Wrong Please Try Agian Later."
+      );
+    }
+  },
 };
 export default apiClient;
