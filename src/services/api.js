@@ -77,5 +77,18 @@ export const productApi = {
       );
     }
   },
+  filterByCategory: async (categoryType) => {
+    try {
+      const { data } = await apiClient.get(
+        `products/?categorySlug=${categoryType}`
+      );
+      return data;
+    } catch (error) {
+      throw new Error(
+        error.response?.data?.message ||
+          "Something Went Wrong Please Try Agian Later."
+      );
+    }
+  },
 };
 export default apiClient;

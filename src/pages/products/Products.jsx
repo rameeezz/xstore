@@ -6,7 +6,7 @@ import Pagination from "../../components/paginationUI/PaginationUi.jsx";
 import { PRODUCTS_PER_PAGE } from "../../constants/index.js";
 import { productApi } from "../../services/api.js";
 import CardItem from "./../../components/cardItem/CardItem";
-import FilterProducts from "./../../components/buttons/FilterProducts";
+import FilterProducts from "./../../components/buttons/filter/FilterProducts";
 
 export default function Products() {
   const [searchParams] = useSearchParams();
