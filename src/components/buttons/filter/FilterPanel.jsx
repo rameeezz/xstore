@@ -1,6 +1,7 @@
 import React from "react";
 import CategoryFilter from "./CategoryFilter";
 import PriceFilter from "./PriceFilter";
+import FilterByPriceAndCategory from "./FilterByPriceAndCategory";
 
 const FilterPanel = ({
   activeFilter,
@@ -21,7 +22,11 @@ const FilterPanel = ({
         <button className="btn-close me-3 mt-2" onClick={onClose}></button>
       </div>
 
-      <span>{activeFilter === "Category" ? "Category" : "Price (EGP)"}</span>
+      <span>{activeFilter === "Category" ? "Category" : ""}</span>
+      <span>{activeFilter === "Price" ? "Price (EGP)" : ""}</span>
+      <span>
+        {activeFilter !== "Category" && activeFilter != "Price" ? "Filter" : ""}
+      </span>
       <hr />
 
       {activeFilter === "Category" && (
@@ -33,6 +38,14 @@ const FilterPanel = ({
 
       {activeFilter === "Price" && (
         <PriceFilter priceRange={priceRange} onChange={onPriceChange} />
+      )}
+      {activeFilter != "Price" && activeFilter != "Category" && (
+        <FilterByPriceAndCategory
+          priceRange={priceRange}
+          onPriceChange={onPriceChange}
+          categoryType={categoryType}
+          onCategoryClick={onCategoryClick}
+        />
       )}
       <hr />
       <div className="d-flex justify-content-center mt-2">
