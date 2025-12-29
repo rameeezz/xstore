@@ -2,7 +2,7 @@ import React from "react";
 import ViewDetails from "./../../components/buttons/ViewDetails";
 import FavButton from "./../../components/buttons/FavButton";
 import "../../styles/cardStyle.css";
-import AddToCart from './../buttons/cart button/AddToCart';
+import AddToCart from './../buttons/cart/AddToCart';
 export default function CardItem({ item }) {
   return (
     <>

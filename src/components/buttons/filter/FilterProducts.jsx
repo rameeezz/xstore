@@ -10,13 +10,8 @@ export default function FilterProducts({ onFilter }) {
     from: "",
     to: "",
   });
-  console.log(priceRange);
-
   const [categoryType, setCategoryType] = useState("");
-  console.log(categoryType);
-
   const [categoryID, setCategoryID] = useState(0);
-  console.log(categoryID);
 
   function handlePriceChange(e) {
     const { name, value } = e.target;
