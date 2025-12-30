@@ -1,15 +1,23 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-export default function AddToCart() {
-    function showAlert() {
-        alert("isa hnwsl")
-    }
+import { toast } from "react-toastify";
+import { useCart } from "./../../../hooks/useCart";
+export default function AddToCart({ itemToCart }) {
+  const { addItem } = useCart();
   return (
-    <>
-      <button className="btn btn-primary" onClick={showAlert}>
-        <FontAwesomeIcon icon={faCartShopping} />
-      </button>
-    </>
+    <button
+      className="btn btn-primary"
+      onClick={() => {
+        const isAdded = addItem(itemToCart);
+        if (isAdded) {
+          toast.success("Item added to cart.");
+        } else {
+          toast.info("Item already in cart.");
+        }
+      }}
+    >
+      <FontAwesomeIcon icon={faCartShopping} />
+    </button>
   );
 }

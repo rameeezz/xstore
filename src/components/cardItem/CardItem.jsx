@@ -48,7 +48,7 @@ export default function CardItem({ item }) {
             </p>
             <div className="w-100 d-flex justify-content-between">
               <ViewDetails productID={item?.id} />
-              <AddToCart/>
+              <AddToCart itemToCart = {item}/>
             </div>
           </div>
         </div>

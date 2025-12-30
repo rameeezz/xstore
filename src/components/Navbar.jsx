@@ -75,6 +75,9 @@ export default function Navbar() {
           </ul>
 
           <div className="d-flex gap-2">
+            <Link to="/cart-page" className="btn btn-outline-dark">
+              Cart
+            </Link>
             <Link to="/signin" className="btn btn-outline-dark">
               Sign in
             </Link>
