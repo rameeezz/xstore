@@ -10,6 +10,7 @@ import "./App.css";
 import Products from "./pages/products/Products";
 import ProductDetails from "./pages/products/ProductDetails";
 import FavPage from "./pages/favorite page/FavPage";
+import Cart from "./pages/cart/Cart.jsx";
 
 function AppContent() {
   useScrollToTop(); // Call hook here inside Router
@@ -52,6 +53,14 @@ function AppContent() {
         element={
           <MasterLayout>
             <FavPage />
+          </MasterLayout>
+        }
+      />
+      <Route
+        path={ROUTES.CART_PAGE}
+        element={
+          <MasterLayout>
+            <Cart/>
           </MasterLayout>
         }
       />

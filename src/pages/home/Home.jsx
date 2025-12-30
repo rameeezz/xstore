@@ -31,7 +31,7 @@ const CategoryCard = ({ category }) => {
 };
 
 export default function Home() {
-  const [category, setCategory] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -43,7 +43,7 @@ export default function Home() {
         categoriesAPI.getAll(),
         productApi.getAllProduct(),
       ]);
-      setCategory(categoriesData);
+      setCategories(categoriesData);
       setProducts(productsData);
     } catch (error) {
       setError(MESSAGES.ERROR || error.message);
@@ -89,8 +89,10 @@ export default function Home() {
       <Header />
       {/*section category */}
       <div className="container my-3">
-        <div
-          className="
+        {/* category section */}
+        <section>
+          <div
+            className="
     d-flex 
     flex-column 
     flex-md-row 
@@ -100,49 +102,56 @@ export default function Home() {
     p-3 
     gap-2
   "
-        >
-          <h2 className="fw-bold textColorMain mb-0">Categories</h2>
+          >
+            <h2 className="fw-bold textColorMain mb-0">Categories</h2>
 
-          <p className="text-muted mb-0 text-md-start text-center textSizeInSmallScreen">
-            Shop furniture, electronics, and clothing with ease.
-            <span className="d-block">Everything you need, in one store.</span>
-          </p>
-        </div>
-        <div className="d-flex justify-content-end justify-content-lg-end justify-content-md-end mb-2">
-          <SeeMore to="categories" word="Categories" />
-        </div>
-        {/* showing some of categories */}
+            <p className="text-muted mb-0 text-md-start text-center textSizeInSmallScreen">
+              Shop furniture, electronics, and clothing with ease.
+              <span className="d-block">
+                Everything you need, in one store.
+              </span>
+            </p>
+          </div>
+          <div className="d-flex justify-content-end justify-content-lg-end justify-content-md-end mb-2">
+            <SeeMore to="categories" word="Categories" />
+          </div>
+          {/* showing some of categories */}
 
-        <div className="row gap-md-0 gap-3 justify-content-center">
-          {category.length > 0 &&
-            category
-              .slice(0, 6)
-              .map((category) => (
-                <CategoryCard key={category?.id} category={category} />
-              ))}
-        </div>
+          <div className="row gap-md-0 gap-3 justify-content-center">
+            {categories.length > 0 &&
+              categories
+                .slice(0, 6)
+                .map((category) => (
+                  <CategoryCard key={category?.id} category={category} />
+                ))}
+          </div>
+        </section>
 
         {/* product section */}
-        <div
-          className=" d-flex flex-column flex-md-row justify-content-center justify-content-md-between align-items-center p-3 gap-2 mt-3
+        <section>
+          <div
+            className=" d-flex flex-column flex-md-row justify-content-center justify-content-md-between align-items-center p-3 gap-2 mt-3
   "
-        >
-          <h2 className="fw-bold textColorMain mb-0">Products</h2>
+          >
+            <h2 className="fw-bold textColorMain mb-0">Products</h2>
 
-          <p className="text-muted mb-0 text-md-start text-center textSizeInSmallScreen">
-            This product is a sample preview of what we offer.
-          </p>
-        </div>
-        <div className="d-flex justify-content-end justify-content-lg-end justify-content-md-end mb-2">
-          <SeeMore to="products" word="Products" />
-        </div>
-        {/* showing some of Products */}
-        <div className="row gap-md-0 gap-3 justify-content-center">
-          {products.length > 0 &&
-            products
-              .slice(0, 6)
-              .map((product) => <CardItem key={product?.id} item={product} />)}
-        </div>
+            <p className="text-muted mb-0 text-md-start text-center textSizeInSmallScreen">
+              This product is a sample preview of what we offer.
+            </p>
+          </div>
+          <div className="d-flex justify-content-end justify-content-lg-end justify-content-md-end mb-2">
+            <SeeMore to="products" word="Products" />
+          </div>
+          {/* showing some of Products */}
+          <div className="row gap-md-0 gap-3 justify-content-center">
+            {products.length > 0 &&
+              products
+                .slice(0, 6)
+                .map((product) => (
+                  <CardItem key={product?.id} item={product} />
+                ))}
+          </div>
+        </section>
       </div>
     </>
   );
