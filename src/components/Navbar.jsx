@@ -1,4 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
+import CartDesign from "./buttons/cart/CartDesign";
 
 export default function Navbar() {
   return (
@@ -11,6 +12,10 @@ export default function Navbar() {
         >
           {/* <LogoMark /> */}
           <strong className="fw-bold mb-0 textColorMain">Xstore</strong>
+        </Link>
+
+        <Link to="/cart-page" className="d-md-none ms-auto me-2">
+          <CartDesign />
         </Link>
 
         <button
@@ -34,7 +39,7 @@ export default function Navbar() {
                 className={({ isActive }) =>
                   `nav-link${isActive ? " active" : ""}`
                 }
-                aria-current={({ isActive }) => (isActive ? 'page' : undefined)}
+                aria-current={({ isActive }) => (isActive ? "page" : undefined)}
               >
                 Home
               </NavLink>
@@ -45,7 +50,7 @@ export default function Navbar() {
                 className={({ isActive }) =>
                   `nav-link${isActive ? " active" : ""}`
                 }
-                aria-current={({ isActive }) => (isActive ? 'page' : undefined)}
+                aria-current={({ isActive }) => (isActive ? "page" : undefined)}
               >
                 Categories
               </NavLink>
@@ -56,7 +61,7 @@ export default function Navbar() {
                 className={({ isActive }) =>
                   `nav-link${isActive ? " active" : ""}`
                 }
-                aria-current={({ isActive }) => (isActive ? 'page' : undefined)}
+                aria-current={({ isActive }) => (isActive ? "page" : undefined)}
               >
                 Products
               </NavLink>
@@ -67,7 +72,7 @@ export default function Navbar() {
                 className={({ isActive }) =>
                   `nav-link${isActive ? " active" : ""}`
                 }
-                aria-current={({ isActive }) => (isActive ? 'page' : undefined)}
+                aria-current={({ isActive }) => (isActive ? "page" : undefined)}
               >
                 Favorites
               </NavLink>
@@ -75,8 +80,8 @@ export default function Navbar() {
           </ul>
 
           <div className="d-flex gap-2">
-            <Link to="/cart-page" className="btn btn-outline-dark">
-              Cart
+            <Link to="/cart-page" className="d-none d-md-block">
+              <CartDesign />
             </Link>
             <Link to="/signin" className="btn btn-outline-dark">
               Sign in

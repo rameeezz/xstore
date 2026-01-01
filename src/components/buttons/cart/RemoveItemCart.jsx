@@ -1,13 +1,15 @@
 import React from "react";
 import { toast } from "react-toastify";
 import { useCart } from "./../../../hooks/useCart.js";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 export default function RemoveItemCart({ removedItem }) {
   const { removeItem } = useCart();
   return (
     <button
-      className="btn btn-danger"
-      onClick={() => {
+      className="btn"
+      onClick={(e) => {
+        e.stopPropagation();
         const isRemoved = removeItem(removedItem);
         if (isRemoved) {
           toast.success("Item is removed from cart.");
@@ -16,7 +18,11 @@ export default function RemoveItemCart({ removedItem }) {
         }
       }}
     >
-      delete
+      <FontAwesomeIcon
+        icon={faTrash}
+        className="delete-icon"
+        style={{ color: "white", stroke: "black", strokeWidth: "25" }}
+      />
     </button>
   );
 }

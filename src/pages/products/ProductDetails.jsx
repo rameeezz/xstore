@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { productApi } from "../../services/api.js";
 import { MESSAGES } from "../../constants/index.js";
 import FavButton from "./../../components/buttons/FavButton";
+import AddToCart from "../../components/buttons/cart/AddToCart.jsx";
 export default function ProductDetails() {
   const [searchParams] = useSearchParams();
   const productID = searchParams.get("productID");
@@ -10,7 +11,7 @@ export default function ProductDetails() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
-
+  const inProductDetails = true;
   const fetchProductDetails = useCallback(async () => {
     setLoading(true);
     if (productID) {
@@ -98,7 +99,11 @@ export default function ProductDetails() {
               <p className="text-muted mt-1">{product?.description}</p>
             </div>
             <div className="d-flex justify-content-center align-items-center mt-3">
-              <button className="btn btn-primary w-75">Add To Cart</button>
+              <AddToCart
+                itemToCart={product}
+                inProductDetailsName={inProductDetails}
+                className="btn btn-primary w-75"
+              />
             </div>
           </div>
         </div>
