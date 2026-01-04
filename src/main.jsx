@@ -5,10 +5,13 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./index.css";
 import App from "./App.jsx";
 import CartProvider from "./context/CartContext.jsx";
+import LoginProvider from "./context/LoginContext.jsx";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <CartProvider>
-      <App />
-    </CartProvider>
+    <LoginProvider>
+      <CartProvider>
+        <App />
+      </CartProvider>
+    </LoginProvider>
   </StrictMode>
 );

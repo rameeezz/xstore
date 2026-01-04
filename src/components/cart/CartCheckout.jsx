@@ -1,5 +1,6 @@
 import React from "react";
 import { useCart } from "../../hooks/useCart";
+import ProceedToCheckout from "./../buttons/checkout/ProceedToCheckout";
 
 const lineBetweenContent = <div className="border-bottom border-2 my-2"></div>;
 export default function CartCheckout() {
@@ -23,9 +24,7 @@ export default function CartCheckout() {
         <input type="text" className="form-control w-100 mb-5" />
         {lineBetweenContent}
         <div className="w-100 d-flex justify-content-center">
-          <button className="btn btn-outline-secondary w-100 text-white">
-            Proceed to checkout
-          </button>
+          <ProceedToCheckout />
         </div>
       </div>
     </>

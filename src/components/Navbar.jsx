@@ -1,7 +1,11 @@
 import { Link, NavLink } from "react-router-dom";
 import CartDesign from "./buttons/cart/CartDesign";
+import { useLogin } from "../hooks/useLogin";
 
 export default function Navbar() {
+  const { userToken, logout } = useLogin();
+  const userRole = localStorage.getItem("userRole");
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light fixed-top bg-white border-bottom shadow-sm">
       <div className="container">
@@ -14,9 +18,11 @@ export default function Navbar() {
           <strong className="fw-bold mb-0 textColorMain">Xstore</strong>
         </Link>
 
-        <Link to="/cart-page" className="d-md-none ms-auto me-2">
-          <CartDesign />
-        </Link>
+        {(!userToken || userRole !== "admin") && (
+          <Link to="/cart-page" className="d-md-none ms-auto me-2">
+            <CartDesign />
+          </Link>
+        )}
 
         <button
           className="navbar-toggler"
@@ -31,64 +37,88 @@ export default function Navbar() {
         </button>
 
         <div className="collapse navbar-collapse" id="primaryNavbar">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <NavLink
-                end
-                to="/"
-                className={({ isActive }) =>
-                  `nav-link${isActive ? " active" : ""}`
-                }
-                aria-current={({ isActive }) => (isActive ? "page" : undefined)}
-              >
-                Home
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                to="/categories"
-                className={({ isActive }) =>
-                  `nav-link${isActive ? " active" : ""}`
-                }
-                aria-current={({ isActive }) => (isActive ? "page" : undefined)}
-              >
-                Categories
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                to="/products"
-                className={({ isActive }) =>
-                  `nav-link${isActive ? " active" : ""}`
-                }
-                aria-current={({ isActive }) => (isActive ? "page" : undefined)}
-              >
-                Products
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                to="/fav-items"
-                className={({ isActive }) =>
-                  `nav-link${isActive ? " active" : ""}`
-                }
-                aria-current={({ isActive }) => (isActive ? "page" : undefined)}
-              >
-                Favorites
-              </NavLink>
-            </li>
-          </ul>
+          {(!userToken || userRole !== "admin") && (
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <NavLink
+                  end
+                  to="/"
+                  className={({ isActive }) =>
+                    `nav-link${isActive ? " active" : ""}`
+                  }
+                  aria-current={({ isActive }) =>
+                    isActive ? "page" : undefined
+                  }
+                >
+                  Home
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  to="/categories"
+                  className={({ isActive }) =>
+                    `nav-link${isActive ? " active" : ""}`
+                  }
+                  aria-current={({ isActive }) =>
+                    isActive ? "page" : undefined
+                  }
+                >
+                  Categories
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  to="/products"
+                  className={({ isActive }) =>
+                    `nav-link${isActive ? " active" : ""}`
+                  }
+                  aria-current={({ isActive }) =>
+                    isActive ? "page" : undefined
+                  }
+                >
+                  Products
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  to="/fav-items"
+                  className={({ isActive }) =>
+                    `nav-link${isActive ? " active" : ""}`
+                  }
+                  aria-current={({ isActive }) =>
+                    isActive ? "page" : undefined
+                  }
+                >
+                  Favorites
+                </NavLink>
+              </li>
+            </ul>
+          )}
 
-          <div className="d-flex gap-2">
-            <Link to="/cart-page" className="d-none d-md-block">
-              <CartDesign />
-            </Link>
-            <Link to="/signin" className="btn btn-outline-dark">
-              Sign in
-            </Link>
-            <Link to="/signup" className="btn btn-primary fw-semibold">
-              Get started
-            </Link>
+          <div
+            className={`d-flex gap-2 ${
+              userToken && userRole === "admin" ? "ms-auto" : ""
+            }`}
+          >
+            {(!userToken || userRole !== "admin") && (
+              <Link to="/cart-page" className="d-none d-md-block">
+                <CartDesign />
+              </Link>
+            )}
+            {!userToken ? (
+              <>
+                <Link to="/signin" className="btn btn-outline-dark">
+                  Sign in
+                </Link>
+                <Link to="/signup" className="btn btn-primary fw-semibold">
+                  Get started
+                </Link>
+              </>
+            ) : (
+              <button className="btn btn-danger" onClick={logout}>
+                Sign Out
+              </button>
+            )}
           </div>
         </div>
       </div>

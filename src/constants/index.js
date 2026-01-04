@@ -18,6 +18,9 @@ export const ROUTES = {
   PRODUCTS_DETAILS: "/products-details",
   FAV_ITEMS: "/fav-items",
   CART_PAGE:"/cart-page",
+  SIGN_UP:"/signup",
+  SIGN_IN:"/signin",
+  ADMIN:"/admin",
   NOT_FOUND: "*",
 };
 
