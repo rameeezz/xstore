@@ -104,4 +104,36 @@ export const productApi = {
     }
   },
 };
+export const userApi = {
+  Sign_Up: async (userData) => {
+    try {
+      const { data } = await apiClient.post("/users", userData);
+      return data;
+    } catch (error) {
+      throw new Error(
+        error.response?.data?.message || "Failed to create user."
+      );
+    }
+  },
+  Sign_IN: async (userData) => {
+    try {
+      const { data } = await apiClient.post("/auth/login", userData);
+      return data;
+    } catch (error) {
+      throw new Error(error.response?.data?.message || "Failed to sign in.");
+    }
+  },
+  getProfile: async (token) => {
+    try {
+      const { data } = await apiClient.get("/auth/profile", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return data;
+    } catch (error) {
+      throw new Error("Failed to fetch user profile.");
+    }
+  },
+};
 export default apiClient;

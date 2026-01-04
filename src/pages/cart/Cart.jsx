@@ -13,7 +13,7 @@ export default function Cart() {
           <div
             className={`${
               cartItems.length > 0 ? "col-lg-7" : "w-100"
-            } d-flex flex-column border border-2 p-2 rounded`}
+            } d-flex flex-column border border-2 p-2 rounded align-self-start`}
           >
             {cartItems.length > 0 ? (
               cartItems.map((element, index) => (

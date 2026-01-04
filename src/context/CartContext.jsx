@@ -12,12 +12,15 @@ export const cartContext = createContext();
 const CART_ACTIONS = {
   ADD: "ADD",
   REMOVE: "REMOVE",
+  REMOVE_ALL: "REMOVE_ALL",
 };
 
 function cartReducer(state, action) {
   switch (action.type) {
     case CART_ACTIONS.ADD:
       return [...state, action.payload];
+    case CART_ACTIONS.REMOVE_ALL:
+      return [];
     case CART_ACTIONS.REMOVE:
       return state.filter((element) => element?.id !== action.payload?.id);
     default:
@@ -64,12 +67,15 @@ export default function CartProvider({ children }) {
     },
     [cartItems]
   );
-
+  const removeAllItems = () => {
+    dispatch({ type: CART_ACTIONS.REMOVE_ALL, payload: [] });
+  };
   const contextValue = useMemo(
     () => ({
       cartItems,
       addItem,
       removeItem,
+      removeAllItems,
     }),
     [cartItems, addItem, removeItem]
   );
