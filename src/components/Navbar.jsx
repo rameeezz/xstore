@@ -9,19 +9,20 @@ export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light fixed-top bg-white border-bottom shadow-sm">
       <div className="container">
-        <Link
-          to="/"
-          className="navbar-brand d-flex align-items-center gap-2"
-          aria-label="Homepage"
-        >
-          {/* <LogoMark /> */}
-          <strong className="fw-bold mb-0 textColorMain">Xstore</strong>
-        </Link>
-
         {(!userToken || userRole !== "admin") && (
-          <Link to="/cart-page" className="d-md-none ms-auto me-2">
-            <CartDesign />
-          </Link>
+          <div>
+            <Link
+              to="/"
+              className="navbar-brand d-flex align-items-center gap-2"
+              aria-label="Homepage"
+            >
+              {/* <LogoMark /> */}
+              <strong className="fw-bold mb-0 textColorMain">Xstore</strong>
+            </Link>
+            <Link to="/cart-page" className="d-md-none ms-auto me-2">
+              <CartDesign />
+            </Link>
+          </div>
         )}
 
         <button

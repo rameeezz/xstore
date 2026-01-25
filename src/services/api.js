@@ -136,4 +136,17 @@ export const userApi = {
     }
   },
 };
+// admin Api 
+export const adminApi = {
+ ADD_CATEGORY: async (categoryDetails) => {
+    try {
+      const { data } = await apiClient.post("/categories", categoryDetails);
+      return data;
+    } catch (error) {
+      throw new Error(
+        error.response?.data?.message || "Failed to create user."
+      );
+    }
+  },
+}
 export default apiClient;
