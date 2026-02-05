@@ -23,7 +23,7 @@ export default function Admin() {
     }
   }, [isAdded]);
   function handleCategoryDetails(e) {
-    setError("")
+    setError("");
     const { name, value } = e.target;
     setCategoryDetails((prev) => ({
       ...prev,
@@ -77,7 +77,7 @@ export default function Admin() {
           Add Category
         </button>
         {error ? (
-          <div class="alert alert-primary mt-3" role="alert">
+          <div className="alert alert-primary mt-3" role="alert">
             {error}
           </div>
         ) : (
