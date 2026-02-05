@@ -15,7 +15,7 @@ export default function ViewDetails({ categoryId, productID }) {
   return (
     <>
       <button
-        className="btn btn-primary btn-sm mt-auto"
+        className="btn btn-primary btn-sm mt-auto view-details-btn"
         onClick={navigateToProducts}
       >
         View Details

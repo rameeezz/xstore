@@ -151,7 +151,7 @@ export default function Home() {
             <SeeMore to="products" word="Products" />
           </div>
           {/* showing some of Products */}
-          <div className="row gap-md-0 justify-content-center">
+          <div className="row g-2 justify-content-center">
             {products.length > 0 &&
               products
                 .slice(0, 6)

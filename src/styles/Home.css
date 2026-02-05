@@ -3,15 +3,7 @@
   top: 5%;
   right: 5%;
 }
-@media (max-width: 576px) {
-  .cardWidth {
-    width: 80% !important;
-    margin: 10px;
-  }
-  .textSizeInSmallScreen {
-    font-size: 12px;
-  }
-}
+
 .card-img-hover {
   transition: transform 0.3s ease-in-out;
 }
@@ -33,7 +25,7 @@
 .custom-scrollbar::-webkit-scrollbar-button {
   display: none;
 }
-.category-image{
+.category-image {
   transition: var(--transition);
 }
 .category-image:hover {
