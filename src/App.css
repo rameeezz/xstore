@@ -100,3 +100,33 @@ body {
     font-size: 0.95rem;
   }
 }
+
+@media (max-width: 576px) {
+  .cardWidth {
+    width: 80% !important;
+    margin: 10px;
+  }
+  .textSizeInSmallScreen {
+    font-size: 12px;
+  }
+  .view-details-btn {
+    font-size: 10px !important;
+    padding: 3px 6px !important;
+    white-space: nowrap;
+  }
+  .card-body {
+    padding: 0.5rem !important;
+  }
+  .card-title {
+    font-size: 0.85rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+  .card-text {
+    font-size: 0.7rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  .add-to-cart-btn .btn {
+    font-size: 12px !important;
+    padding: 4px 8px !important;
+  }
+}

@@ -7,7 +7,7 @@ export default function AddToCart({ itemToCart, inProductDetailsName }) {
   const { addItem } = useCart();
   return (
     <button
-      className="btn btn-primary"
+      className="btn btn-primary add-to-card-btn"
       onClick={() => {
         const isAdded = addItem(itemToCart);
         if (isAdded) {
