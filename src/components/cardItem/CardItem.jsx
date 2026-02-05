@@ -2,11 +2,11 @@ import React from "react";
 import ViewDetails from "./../../components/buttons/ViewDetails";
 import FavButton from "./../../components/buttons/FavButton";
 import "../../styles/cardStyle.css";
-import AddToCart from './../buttons/cart/AddToCart';
+import AddToCart from "./../buttons/cart/AddToCart";
 export default function CardItem({ item }) {
   return (
     <>
-      <div className="col-lg-4 col-md-6 col-sm-12 mt-0 mt-md-3 mt-3">
+      <div className="col-lg-4 col-md-6 col-6 mt-0 mt-md-3 mt-3">
         <div className="card">
           <div className="position-relative">
             <div className="position-absolute fav-tag">
@@ -48,7 +48,7 @@ export default function CardItem({ item }) {
             </p>
             <div className="w-100 d-flex justify-content-between">
               <ViewDetails productID={item?.id} />
-              <AddToCart itemToCart = {item}/>
+              <AddToCart itemToCart={item} />
             </div>
           </div>
         </div>

@@ -59,7 +59,7 @@ function Pagination({ items = [], itemsPerPage, renderItem }) {
     <>
       {/* Items Grid */}
       {renderItem && currentItems.length > 0 && (
-        <div className="row g-4">
+        <div className="row g-4 mt-3">
           {currentItems.map((item, index) => (
             <React.Fragment key={item?.id || `item-${index}`}>
               {renderItem(item)}

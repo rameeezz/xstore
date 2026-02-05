@@ -1,29 +1,36 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "./../../components/header/Header";
 import { categoriesAPI } from "../../services/api.js";
 import { MESSAGES } from "../../constants/index.js";
 import "../../styles/Home.css";
 import SeeMore from "./../../components/buttons/SeeMore";
-import ViewDetails from "./../../components/buttons/ViewDetails";
 import { productApi } from "../../services/api.js";
 import CardItem from "./../../components/cardItem/CardItem";
 
 // Reusable Card Component - Capitalized!
 const CategoryCard = ({ category }) => {
+  const navigate = useNavigate();
   return (
-    <div className="col-lg-4 col-md-6 col-sm-12 cardWidth mt-0 mt-md-3">
-      <div className="category-card card h-100 rounded-card shadow-sm border-0">
-        <div className="card-img-container">
+    <div
+      className="col-lg-4 col-md-6 col-sm-12  mt-0 mt-md-3 cursor-Pointer"
+      onClick={() => navigate(`/products?categoryId=${category.id}`)}
+    >
+      <div className=" h-100 border-0 bg-transparent d-flex flex-column align-items-center">
+        <div
+          className="rounded-circle overflow-hidden shadow-sm"
+          style={{ width: "250px", height: "250px" }}
+        >
           <img
             src={category?.image}
-            className="card-img-top rounded-img"
+            className="w-100 h-100 category-image"
+            style={{ objectFit: "cover" }}
             alt={category?.name}
             loading="lazy"
           />
         </div>
-        <div className="card-body text-center d-flex flex-column">
-          <h5 className="card-title fw-bold">{category?.name}</h5>
-          <ViewDetails categoryId={category?.id} />
+        <div className="card-body text-center d-flex flex-column align-items-center">
+          <h5 className="card-title fw-bold mt-2">{category?.name}</h5>
         </div>
       </div>
     </div>
@@ -87,6 +94,7 @@ export default function Home() {
   return (
     <>
       <Header />
+
       {/*section category */}
       <div className="container my-3">
         {/* category section */}
@@ -117,10 +125,10 @@ export default function Home() {
           </div>
           {/* showing some of categories */}
 
-          <div className="row gap-md-0 gap-3 justify-content-center">
+          <div className="d-flex flex-nowrap overflow-auto gap-3 custom-scrollbar pb-3">
             {categories.length > 0 &&
               categories
-                .slice(0, 6)
+                .slice(0, 7)
                 .map((category) => (
                   <CategoryCard key={category?.id} category={category} />
                 ))}
@@ -143,7 +151,7 @@ export default function Home() {
             <SeeMore to="products" word="Products" />
           </div>
           {/* showing some of Products */}
-          <div className="row gap-md-0 gap-3 justify-content-center">
+          <div className="row gap-md-0 justify-content-center">
             {products.length > 0 &&
               products
                 .slice(0, 6)

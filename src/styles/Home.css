@@ -1,5 +1,5 @@
 /* style for responsive in category section */
-.fav-tag{
+.fav-tag {
   top: 5%;
   right: 5%;
 }
@@ -8,7 +8,34 @@
     width: 80% !important;
     margin: 10px;
   }
-  .textSizeInSmallScreen{
+  .textSizeInSmallScreen {
     font-size: 12px;
   }
+}
+.card-img-hover {
+  transition: transform 0.3s ease-in-out;
+}
+.category-card:hover .card-img-hover {
+  transform: scale(1.1);
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  height: 3px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-button {
+  display: none;
+}
+.category-image{
+  transition: var(--transition);
+}
+.category-image:hover {
+  transform: scale(1.15);
 }

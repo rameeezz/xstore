@@ -10,7 +10,7 @@ export default function Navbar() {
     <nav className="navbar navbar-expand-lg navbar-light fixed-top bg-white border-bottom shadow-sm">
       <div className="container">
         {(!userToken || userRole !== "admin") && (
-          <div>
+          <div className="d-flex align-items-center">
             <Link
               to="/"
               className="navbar-brand d-flex align-items-center gap-2"
@@ -19,12 +19,11 @@ export default function Navbar() {
               {/* <LogoMark /> */}
               <strong className="fw-bold mb-0 textColorMain">Xstore</strong>
             </Link>
-            <Link to="/cart-page" className="d-md-none ms-auto me-2">
-              <CartDesign />
-            </Link>
           </div>
         )}
-
+        <Link to="/cart-page" className="d-md-none ms-auto me-2">
+          <CartDesign />
+        </Link>
         <button
           className="navbar-toggler"
           type="button"

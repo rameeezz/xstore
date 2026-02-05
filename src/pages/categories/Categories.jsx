@@ -59,7 +59,7 @@ export default function Categories() {
           items={categories}
           itemsPerPage={CATEGORIES_PER_PAGE}
           renderItem={(cat) => (
-            <div className="col-lg-4 col-md-6 col-sm-12">
+            <div className="col-lg-4 col-md-6 col-6">
               <div className="category-card card h-100 rounded-card shadow-sm border-0">
                 <div className="card-img-container">
                   <img
