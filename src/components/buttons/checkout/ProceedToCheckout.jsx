@@ -1,12 +1,18 @@
-import React from "react";
 import { useCart } from "../../../hooks/useCart.js";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
-export default function ProceedToCheckout() {
+export default function ProceedToCheckout({ userToken }) {
   const { removeAllItems } = useCart();
   const navigate = useNavigate();
-
+  console.log(userToken);
+  function checkUserToken() {
+    if (!userToken) {
+      navigate("/signin");
+    } else {
+      handleCheckout();
+    }
+  }
   function handleCheckout() {
     Swal.fire({
       title: "Success!",
@@ -23,7 +29,7 @@ export default function ProceedToCheckout() {
     <>
       <button
         className="btn btn-outline-secondary w-100 text-white"
-        onClick={handleCheckout}
+        onClick={checkUserToken}
       >
         Proceed to checkout
       </button>
