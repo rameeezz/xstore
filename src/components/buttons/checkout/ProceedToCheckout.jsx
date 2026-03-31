@@ -1,11 +1,12 @@
 import { useCart } from "../../../hooks/useCart.js";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { useLogin } from "../../../hooks/useLogin.js";
 
-export default function ProceedToCheckout({ userToken }) {
+export default function ProceedToCheckout() {
+  const { userToken } = useLogin();
   const { removeAllItems } = useCart();
   const navigate = useNavigate();
-  console.log(userToken);
   function checkUserToken() {
     if (!userToken) {
       navigate("/signin");
