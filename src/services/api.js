@@ -30,6 +30,18 @@ export const categoriesAPI = {
       );
     }
   },
+  updateCatgeroy: async (categoryId ,newData) => {
+    try {
+      const { data } = await apiClient.put(
+        `/categories/${categoryId}`,newData
+      );
+      return data;
+    } catch (error) {
+      throw new Error(
+        error.response?.data?.message || "Failed to fetch product in category"
+      );
+    }
+  },
   getById: async (id) => {
     try {
       const { data } = await apiClient.get(`/categories/${id}`);
